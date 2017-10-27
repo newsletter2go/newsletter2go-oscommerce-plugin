@@ -40,6 +40,9 @@ class N2GoApi
             $this->connected = $this->checkApiKey();
 
             try {
+                tep_db_query('SET NAMES utf8');
+                tep_db_query('SET CHARACTER SET utf8');
+
                 if (!$this->connected['success']) {
                     echo $this->responseHelper->generateErrorResponse($this->connected['message'], Nl2go_ResponseHelper::ERRNO_PLUGIN_CREDENTIALS_WRONG);
                 } else {
